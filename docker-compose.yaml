@@ -30,6 +30,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: password
       SPRING_SQL_INIT_MODE: always
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      BILLING_SERVICE_ADDRESS: billing-service
+      BILLING_SERVICE_GRPC_PORT: 9001
     ports:
       - "4000:4000"
     networks:
