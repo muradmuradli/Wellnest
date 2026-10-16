@@ -20,7 +20,7 @@ services:
 
   patient-service:
     build:
-      context: .
+      context: ./patient-service
       dockerfile: Dockerfile
     image: patient-service
     container_name: patient-service
@@ -37,6 +37,18 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+  billing-service:
+    build:
+      context: ./billing-service
+      dockerfile: Dockerfile
+    image: billing-service
+    container_name: billing-service
+    ports:
+      - "4001:4001"
+      - "9001:9001"
+    networks:
+      - internal
 
 networks:
   internal:
