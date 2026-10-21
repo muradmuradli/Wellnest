@@ -100,8 +100,6 @@ services:
       SPRING_SQL_INIT_MODE: always
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       JWT_SECRET: ${JWT_SECRET}
-    ports:
-      - "4005:4005"
     networks:
       - internal
     depends_on:
@@ -141,6 +139,8 @@ services:
       dockerfile: Dockerfile
     image: api-gateway
     container_name: api-gateway
+    environment:
+      AUTH_SERVICE_URL: http://auth-service:4005
     ports:
       - "4004:4004"
     networks:
